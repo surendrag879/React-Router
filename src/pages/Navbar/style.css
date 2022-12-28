@@ -3,35 +3,39 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: lightgray;
+  /* background-color: lightgray; */
 }
 
 li {
   float: left;
   margin: 10px;
-  border-right: 1px solid #bbb;
+  /* border-right: 1px solid #bbb; */
 }
 
 li:last-child {
   border-right: none;
 }
 
-li Link {
+li .underLine {
   display: block;
-  color: white;
+  /* color: white; */
   text-align: center;
-  padding: 14px 16px;
+  padding: 10px 14px;
   text-decoration: none;
 }
 
-li Link:hover:not(.active) {
+li .underLine:hover:not(.active) {
   background-color: #111;
+  color: white;
 }
 
 .active {
   background-color: #04aa6d;
 }
 
-.about{
+.about {
   float: right;
+}
+.underLine {
+  text-decoration: none;
 }
