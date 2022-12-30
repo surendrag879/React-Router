@@ -17,6 +17,7 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
         loginSuccess: (state, action) => {
+            console.log('loginsuccess', state, action);
             state.isLoggedIn = true;
             state.user = action.payload;
             setLocalData("user", action.payload);
@@ -44,11 +45,10 @@ export const login = ({ email, password }) =>
             if (response && response.status === 200 && response.data.success) {
                 const { data } = response;
                 const data1 = {
-                    // name: data.username,
+                    name: data.username,
                     email: data.email,
-                    password: data.password,
-                    // token: response.data.authorization,
-                    // message: data.message,
+                    token: response.data.authorization,
+                    message: data.message,
                 };
                 dispatch(loginSuccess(data1));
             } else if (!response.success) {

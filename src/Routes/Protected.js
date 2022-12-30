@@ -1,10 +1,21 @@
 import React from 'react';
-import { Outlet, Navigate } from 'react-router-dom';
+import { Outlet, Navigate, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectAuth } from '../Services/authSlice'
+import { getLocalData } from '../Helpers/storage';
 
-const logedIn = false;
 
-const Protected = () => {
-    return logedIn ? <Outlet /> : <Navigate to={'/login'} />
-}
+const ProtectedRoute = ({ children }) => {
 
-export default Protected
+    const user = getLocalData('user');
+    const auth = useSelector(selectAuth);
+    const location = useLocation();
+
+    if (!auth.isLoggedIn || !user?.token) {
+        return <Navigate to='/login' state={{ from: location }} replace />;
+    }
+
+    return children;
+};
+
+export default ProtectedRoute

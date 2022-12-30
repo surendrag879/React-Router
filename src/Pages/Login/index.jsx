@@ -11,13 +11,17 @@ import {
   Typography,
 } from "@mui/material";
 
+import { useDispatch } from 'react-redux';
+import { login } from "../../Services/authSlice";
+
 const schema = yup.object({
-  userName: yup.string().required("Enter a valid username"),
+  email: yup.string().required("Enter a valid email"),
   password: yup.string().required("Enter a valid password"),
 });
 
 //Login componenet
-function Login() {
+const Login = () => {
+  const dispatch = useDispatch();
   // form
   const {
     control,
@@ -27,8 +31,9 @@ function Login() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = ({ userName, password }) => {
-    console.log(userName, password);
+  const onSubmit = ({ email, password }) => {
+    console.log(email, password);
+    dispatch(login({email, password}));
   };
 
   return (
@@ -57,20 +62,20 @@ function Login() {
           sx={{ mt: 1, width: "100%" }}
         >
           <Controller
-            name="userName"
+            name="email"
             control={control}
             rules={{ required: true }}
             defaultValue={""}
             render={({ field }) => (
               <TextField
-                id="userName"
+                id="email"
                 label="Email Address"
                 size="medium"
                 autoFocus
                 required
                 fullWidth
-                error={!!errors.userName}
-                helperText={errors.userName?.message}
+                error={!!errors.email}
+                helperText={errors.email?.message}
                 {...field}
               />
             )}
