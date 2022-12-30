@@ -5,20 +5,23 @@ const Navbar = () => {
     return (
         <>
             <ul>
-                <li className='active'>
-                    <Link to="/">Home</Link>
+                <li>
+                    <Link className='Link' to="/">Home</Link>
                 </li>
                 <li>
-                    <Link to="/counter">Counter</Link>
+                    <Link className='Link' to="/counter">Counter</Link>
                 </li>
                 <li>
-                    <Link to="/todoapp">TodoApp</Link>
+                    <Link className='Link' to="/todoapp">TodoApp</Link>
                 </li>
                 <li>
-                    <Link to="/contact">Contact</Link>
+                    <Link className='Link' to="/useMemo">useMemo</Link>
+                </li>
+                <li>
+                    <Link className='Link' to="/useCallback">useCallback</Link>
                 </li>
                 <li className='about'>
-                    <Link to="/login">Login</Link>
+                    <Link className='Link' to="/logout">Logout</Link>
                 </li>
             </ul>
         </>
