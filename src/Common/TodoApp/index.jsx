@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Todos from "../../_components/todo";
+import Todos from "../../_Components/todo";
 
 const TodoList = () => {
   const [count, setCount] = useState(0);

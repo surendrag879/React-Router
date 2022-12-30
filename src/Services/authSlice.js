@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getLocalData, setLocalData } from "../helper/storage";
+import { getLocalData, setLocalData } from "../Helpers/storage";
 import AuthService from "./authService";
 
 const user = getLocalData("user");
@@ -44,11 +44,11 @@ export const login = ({ email, password }) =>
             if (response && response.status === 200 && response.data.success) {
                 const { data } = response;
                 const data1 = {
-                    id: data.id,
-                    name: data.username,
+                    // name: data.username,
                     email: data.email,
-                    token: response.data.authorization,
-                    message: data.message,
+                    password: data.password,
+                    // token: response.data.authorization,
+                    // message: data.message,
                 };
                 dispatch(loginSuccess(data1));
             } else if (!response.success) {

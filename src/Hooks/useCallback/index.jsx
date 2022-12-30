@@ -1,5 +1,5 @@
 import { React, useState, useCallback ,useMemo} from 'react';
-import ChildComponent from '../useMemo/childComponent';
+import ChildComponent from '../childComp';
 
 function UseCallBack() {
     const [num, setNum] = useState(0);

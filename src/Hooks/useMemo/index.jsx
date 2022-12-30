@@ -1,6 +1,6 @@
 
 import { React, useReducer, useMemo } from 'react';
-import ChildComponent from './childComponent';
+import ChildComponent from '../childComp';
 
 //useReducer hook......
 const initialState = 0;
