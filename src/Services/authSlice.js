@@ -17,7 +17,7 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
         loginSuccess: (state, action) => {
-            console.log('loginsuccess', state, action);
+            // console.log('loginsuccess', state, action);
             state.isLoggedIn = true;
             state.user = action.payload;
             setLocalData("user", action.payload);
@@ -30,7 +30,7 @@ export const authSlice = createSlice({
         logout: (state) => {
             state.isLoggedIn = false;
             state.user = null;
-            //   AuthService.logout();
+            AuthService.logout();
         },
     },
 });

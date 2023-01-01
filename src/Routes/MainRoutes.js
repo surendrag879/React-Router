@@ -1,25 +1,28 @@
 import React from 'react'
+import { createBrowserRouter } from 'react-router-dom';
 import ProtectedRoute from './Protected';
 import ErrorPage from '../Pages/404Page/index';
 import Navbar from '../_Components/Navbar';
-import Login from '../Pages/Login';
-const MainRoutes = {
-    path: "/",
-    eleemnt: <Login />,
+import Home from '../Pages/Home/index';
+import TodoIndex from '../Common/TodoApp/index';
+
+const MainRoutes = createBrowserRouter[{
+    path: '/',
+    element: <Navbar />,
     children: [
         {
-            path: "/",
-            eleemnt: (
+            path: '/',
+            element: (
                 <ProtectedRoute>
-                    <Navbar />
+                    <Home />
                 </ProtectedRoute>
             )
         },
         {
-            path: "*",
-            eleemnt: <ErrorPage />
+            path: '*',
+            element: <ErrorPage />
         }
     ]
-}
+}]
 
-export default MainRoutes
+export default MainRoutes;
