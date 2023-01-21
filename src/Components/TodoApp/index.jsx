@@ -10,7 +10,6 @@ const TodoIndex = () => {
     const [todo, setTodo] = useState([]);
     const [updateIndex, setUpdateIndex] = useState("");
     const [isEditMode, setIsEditMode] = useState(false);
-    // const [dataSource, setDataSource] = useState('');
 
     const handleSubmit = () => {
         if (task.trim().length === 0) {
@@ -20,7 +19,6 @@ const TodoIndex = () => {
         else {
             setTodo([...todo, task]);
             setTask("");
-            // localStorage.setItem('Todo', JSON.stringify(todo))
         }
     }
 
