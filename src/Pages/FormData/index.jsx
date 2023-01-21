@@ -1,13 +1,12 @@
-import { Button } from '@mui/material'
-import React, {useState } from 'react'
+import React, { useState } from 'react'
 import Table from './table';
 import FormInput from './formInput';
 
 
 const initialState = {
-    fullName: '',
-    email: '',
-    salary: '',
+    name: '',
+    userName: '',
+    password: '',
 }
 const FormData = () => {
 
@@ -21,11 +20,17 @@ const FormData = () => {
             [e.target.name]: e.target.value,
         });
     };
-    
-    const handleSubmit = () => {
-        setTableData([...tableData, formInputData]);
-        console.log('clciked')
-        setFormInputData(initialState)
+
+    const handleSubmit = (e) => {
+        if (formInputData.length === 0) {
+            alert('Plz fill all fildes....')
+        }
+        else {
+            setTableData([...tableData, formInputData]);
+            setFormInputData(initialState)
+            // e.preventDefault();
+        }
+
 
     }
     return (
@@ -35,47 +40,7 @@ const FormData = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-sm-8">
-
-                        {/* <div className="form-row row">
-                            <div className="col">
-                                <input
-                                    className="form-control"
-                                    name="fullName"
-                                    placeholder="Full Name"
-                                    type="text"
-                                    value={values.fullName}
-                                    onChange={handleInputChange}
-                                />
-                            </div>
-                            <div className="col">
-                                <input
-                                    className="form-control"
-                                    name="email"
-                                    placeholder="Enter email"
-                                    type="email"
-                                    value={values.email}
-                                    onChange={handleInputChange}
-                                />
-                            </div>
-                            <div className="col">
-                                <input
-                                    className="form-control"
-                                    name="salary"
-                                    placeholder="Salary"
-                                    type="text"
-                                    value={values.salary}
-                                    onChange={handleInputChange}
-                                />
-                            </div>
-                            <div className="col">
-                                <Button
-                                    variant='outlined'
-                                    onClick={handleSubmit}>
-                                    Submit
-                                </Button>
-                            </div>
-                        </div> */}
-                        <FormInput handleChange={handleChange} formInputData={formInputData} handleSubmit={handleSubmit}/>
+                        <FormInput handleChange={handleChange} formInputData={formInputData} handleSubmit={handleSubmit} />
                         <Table tableData={tableData} />
                     </div>
                 </div>

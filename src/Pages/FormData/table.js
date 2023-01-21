@@ -1,29 +1,65 @@
 import React from 'react';
-
+const Columns = [
+    {
+        id: 'id',
+        label: 'Id'
+    },
+    {
+        id: 'name',
+        label: 'Name'
+    },
+    {
+        id: 'userName',
+        label: 'Email Id'
+    },
+    {
+        id: 'password',
+        label: 'Password'
+    },
+]
 function Table({ tableData }) {
+    // console.log(tableData);
     return (
         <table className="table">
             <thead>
                 <tr>
-                    <th>S.N</th>
-                    <th>Full Name</th>
-                    <th>Email Address</th>
-                    <th>Salary</th>
+                    {Columns.map((column) => (
+                        <th key={column.id}>
+                            {column.label}
+                        </th>
+                    ))}
                 </tr>
             </thead>
             <tbody>
-                {
-                    tableData.map((data, index) => {
+                {tableData?.length ? (
+
+                    tableData.map((item, index) => {
                         return (
                             <tr key={index}>
-                                <td>{index + 1}</td>
-                                <td contentEditable>{data.fullName}</td>
-                                <td>{data.email}</td>
-                                <td>{data.salary}</td>
+                                {Columns.map((column, key) => {
+                                    const value = item[column.id];
+                                    if (column.id === 'id') {
+                                        return (
+                                            <td key={column.id}>{index + 1}</td>
+                                        )
+                                    }
+                                    return (
+                                        <td key={column.id}>{value}</td>
+                                    )
+                                })}
                             </tr>
                         )
+
                     })
-                }
+                ) : (
+                    <tr>
+                        <td colSpan={4} style={{ textAlign: 'center' }}>
+                            No record found
+                        </td>
+                    </tr>
+
+                )}
+
             </tbody>
         </table>
     )
