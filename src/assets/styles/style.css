@@ -1,18 +1,19 @@
-.todoApp {
+.main {
   padding: 1rem;
   max-width: 50%;
-  margin: 10px auto;
+  margin:20px auto;
   text-align: center;
+  color: white;
   background: #333;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 5px;
 }
 
-.todoApp h1 {
+.main h1 {
   font-weight: 300;
   color: #44c0b6;
   font-size: 2.5rem;
   letter-spacing: 0.2rem;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 /* input field... */
@@ -50,7 +51,14 @@ button {
   color: #44c0b6;
   border-left: none;
 }
-
+.add-btn {
+  color: #44c0b6;
+  width: 150PX;
+}
+.add-btn:hover {
+  color: #252525;
+  background: #44c0b6;
+}
 .add-button:hover {
   color: #252525;
   background: #44c0b6;

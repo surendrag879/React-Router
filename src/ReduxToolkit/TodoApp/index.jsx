@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import useKey from "@rooks/use-key";
+// import useKey from "@rooks/use-key";
 import "../../assets/styles/style.css";
-import { useDispatch, useSelector } from "react-redux";
-import { addTodo } from "../../Store/todoReduxSlice";
 import TodoList from "./todoList";
+
+import { useDispatch, useSelector } from "react-redux";
+import { addTodo, updateTodo } from "../../Store/todoReduxSlice";
 
 const TodoAppRedux = () => {
     const dispatch = useDispatch();
@@ -11,51 +12,54 @@ const TodoAppRedux = () => {
     const [isEditMode, setIsEditMode] = useState(false);
     const { todoList, itemId, count } = useSelector((state) => state.todoRedux);
 
-    console.log("todoList:", todoList, "updateItem:", itemId);
-
-    const windowEnter = (e) => {
+    const handleSubmit = (e) => {
         if (task.trim().length === 0) {
             alert("enter task");
             return;
         } else {
             dispatch(addTodo(task));
             setTask("");
-            setIsEditMode(false)
+            setIsEditMode(false);
         }
     };
-    useKey(["Enter"], windowEnter);
+    // useKey(["Enter"], windowEnter);
 
-    const editData = () => {
-        let editData = todoList?.[itemId]?.data;
-        console.log(editData)
-        setIsEditMode(true)
-        // setTask(editData)
-    }
-    // editData();
+    useEffect(() => {
+        if (itemId) {
+            console.log("itemId", itemId);
+            setIsEditMode(true);
+            const UpdateValue = todoList.filter((d) => d.id === itemId);
+            console.log('updateId', UpdateValue);
+            setTask(UpdateValue[0].value);
+        }
+    }, [itemId, todoList]);
+
     const handleUpdate = (e) => {
-        console.log('handleUpdate clicked..')
-        setIsEditMode(true)
+        dispatch(updateTodo({ id: itemId, value: task }));
+        setTask("");
+        setIsEditMode(false);
     };
 
-  
     return (
-        <div className="todoApp">
-            <h1>React Todo App</h1>
+        <div className="main">
+            <h1>Todo App With Redux</h1>
             <p>{`total count: ${count}`}</p>
             <input
                 className="todo-Input"
                 type="text"
                 value={task}
                 placeholder="Create a new todo"
-                onChange={(event) => setTask(event.target.value)}
+                onChange={(event) => {
+                    setTask(event.target.value);
+                }}
             />
-
-            <button className="add-button"
+            <button
+                className="add-button"
                 onClick={() => {
-                    isEditMode ? handleUpdate() : windowEnter()
-                }}>
-
-                {isEditMode ? "Update" : "Enter"}
+                    isEditMode ? handleUpdate() : handleSubmit();
+                }}
+            >
+                {isEditMode ? "Update" : "Add"}
             </button>
             <TodoList />
         </div>

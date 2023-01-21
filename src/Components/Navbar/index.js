@@ -15,11 +15,28 @@ const Navbar = () => {
                             </li>
 
                             <li className="nav-item">
-                                <Link className="nav-link" to="/#">other</Link>
+                                <Link className="nav-link active" aria-current="page" to="/todoAppRedux">TodoAppRedux</Link>
                             </li>
+
                             <li className="nav-item">
-                                <Link className="nav-link" to="/#">Service</Link>
+                                <Link className="nav-link" to="/counter">Counter</Link>
                             </li>
+
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/contextApi">Context</Link>
+                            </li>
+
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/useReducer">UseReducer</Link>
+                            </li>
+
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/useCallback">useCallback</Link>
+                            </li> 
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/formData">formData</Link>
+                            </li> 
+
                         </ul>
                     </div>
                 </div>

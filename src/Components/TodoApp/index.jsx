@@ -14,7 +14,7 @@ const TodoIndex = () => {
 
     const handleSubmit = () => {
         if (task.trim().length === 0) {
-            alert('please enter task')
+            alert('fill the task in input filed..')
             return;
         }
         else {
@@ -41,11 +41,13 @@ const TodoIndex = () => {
         const clone = [...todo];
         clone.splice(id, 1)
         setTodo(clone)
+        setTask('');
+        setIsEditMode(false);
     }
     return (
         <>
-            <div className="todoApp">
-                <h1>React Todo App</h1>
+            <div className="main">
+                <h1>Todo App without Redux</h1>
                 <input className='todo-Input'
                     type="text"
                     value={task}
@@ -90,7 +92,7 @@ const TodoIndex = () => {
                         ))}
                     </ul>
                 ) : (
-                    <div className="empty">
+                    <div className="empty" testId="noTask">
                         <p>No task found</p>
                     </div>
                 )}

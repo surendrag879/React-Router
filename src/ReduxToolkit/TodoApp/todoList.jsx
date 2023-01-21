@@ -4,8 +4,7 @@ import { deleteTodo, editTodo } from '../../Store/todoReduxSlice';
 
 const TodoList = () => {
     const dispatch = useDispatch();
-    const {todoList,count} = useSelector((state) => state.todoRedux);
-    console.log("todoList:", todoList, 'count',count)
+    const { todoList } = useSelector((state) => state.todoRedux);
     return (
         <>
             {todoList?.length > 0 ? (
@@ -13,7 +12,7 @@ const TodoList = () => {
                     {todoList.map((item, index) => (
                         <div className='todo' key={index}>
                             <li className='todo-li'>
-                                {item.data}
+                                {item.value}
                             </li>
                             <button className='delete-button' onClick={() => dispatch(deleteTodo(item.id))}>Delete</button>
                             <button className='update-button' onClick={() => dispatch(editTodo(item.id))}>Edit</button>
