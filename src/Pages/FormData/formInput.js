@@ -43,7 +43,7 @@ const FormInput = ({ handleChange, formInputData, handleSubmit }) => {
                 handleSubmit();
               }}
             >
-              Submit{" "}
+              Submit
             </button>
           </div>
         </div>

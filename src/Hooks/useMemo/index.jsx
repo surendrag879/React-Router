@@ -1,34 +1,37 @@
+import React, { useState } from 'react';
+import { CreateTodos } from './utils';
+import TodoList from './TodoList';
 
-import { React, useReducer, useMemo } from 'react';
-import ChildComponent from '../childComp';
+const todos = CreateTodos();
 
-//useReducer hook......
-const initialState = 0;
-const Reducer = (state, action) => {
-    console.log(state, action);
-    if (action.type === 'INCREMENT') {
-        return state + 1
-    }
-    if (action.type === 'DECREMENT') {
-        return state - 1;
-    }
-    return state;
-}
-const UseMemo = () => {
-    const [state, dispatch] = useReducer(Reducer, initialState);
-
-    const useMemoFunction = useMemo(() => <ChildComponent />, [])
-
+export default function UseMemo() {
+    const [tab, setTab] = useState('all');
+    const [isDark, setIsDark] = useState(false);
     return (
-        <div>
-            {useMemoFunction}
-            <button onClick={() => dispatch({ type: 'DECREMENT' })}>Decrement</button>
-            <h1>count:{state}</h1>
-            <button onClick={() => dispatch({ type: 'INCREMENT' })}>Increment</button>
-        </div>
-    )
+        <>
+            <div className='main'>
+                <button onClick={() => setTab('all')}> All </button>
+                <button onClick={() => setTab('active')}>Active </button>
+                <button onClick={() => setTab('completed')}>Completed</button>
+
+                <br />
+                <hr />
+
+                <label>
+                    Dark mode
+                    <input
+                        type="checkbox"
+                        checked={isDark}
+                        onChange={e => setIsDark(e.target.checked)}
+                    />
+                </label>
+
+                <br />
+                <hr />
+
+                <TodoList todos={todos} tab={tab} theme={isDark ? 'dark' : 'light'}
+                />
+            </div>
+        </>
+    );
 }
-
-export default UseMemo;
-
-

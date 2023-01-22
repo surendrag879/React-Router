@@ -8,7 +8,7 @@ const UseCallback = () => {
     const show = useCallback(() => {
         console.log('show function clicked...')
         return `My name is surendra`;
-    }, [count])
+    }, [])
 
     return (
         <>

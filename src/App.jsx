@@ -7,6 +7,7 @@ import TodoAppRedux from './ReduxToolkit/TodoApp/index';
 import Counter from './ReduxToolkit/Counter';
 import Appcontext from './Hooks/contextAPI/index';
 import UseReducer from './Hooks/useReducer';
+import UseMemo from './Hooks/useMemo';
 import UseCallback from './Hooks/usecallback';
 import FormData from './Pages/FormData';
 
@@ -21,6 +22,7 @@ const App = () => {
         <Route path='counter' element={< Counter />} />
         <Route path='contextApi' element={<Appcontext />} />
         <Route path='useReducer' element={<UseReducer />} />
+        <Route path='useMemo' element={<UseMemo />} />
         <Route path='useCallback' element={<UseCallback />} />
         <Route path='formData' element={<FormData />} />
       </Routes>
